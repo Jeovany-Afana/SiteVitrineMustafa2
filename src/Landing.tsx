@@ -31,8 +31,8 @@ import {
 const BRAND_NAME = "SunuShield";
 const TAGLINE = "Chaussures de sécurité pro — confort, résistance, style.";
 const PRODUCT_NAME = "S3 SteelGuard Pro";
-const CONTACT_WHATSAPP = "https://wa.me/221769315441";
-const CONTACT_PHONE = "+221 76 931 54 41";
+const CONTACT_WHATSAPP = "https://wa.me/221781159205";
+const CONTACT_PHONE = "+221 78 115 92 05";
 const PRODUCT_IMG = "/images/chaussure1.png";
 
 export default function Landing() {
@@ -70,6 +70,7 @@ export default function Landing() {
 }
 
 // ======== ENHANCED NAVBAR ========
+// ======== ENHANCED NAVBAR ========
 function EnhancedNav() {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,8 +89,8 @@ function EnhancedNav() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className={`fixed top-0 w-full z-50 transition-all duration-500 ${
                 scrolled
-                    ? "backdrop-blur-xl bg-blue-900/90 border-b border-blue-700/60 shadow-2xl"
-                    : "bg-blue-900/95 backdrop-blur-md border-b border-blue-700/40"
+                    ? "backdrop-blur-xl bg-white/95 border-b border-gray-200 shadow-2xl"
+                    : "bg-white/95 backdrop-blur-md border-b border-gray-200"
             }`}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
@@ -103,34 +104,38 @@ function EnhancedNav() {
                         initial={{ rotate: -180, scale: 0 }}
                         animate={{ rotate: 0, scale: 1 }}
                         transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                        className="h-10 w-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 grid place-items-center shadow-lg"
+                        className="h-12 w-12 rounded-xl bg-gradient-to-r from-sky-500 to-blue-500 grid place-items-center shadow-lg overflow-hidden"
                     >
-                        <ShieldCheck className="w-5 h-5 text-white" />
+                        <img
+                            src="/images/logo.PNG"
+                            alt={`${BRAND_NAME} Logo`}
+                            className="w-10 h-10 object-contain"
+                        />
                     </motion.div>
-                    <span className="font-bold tracking-tight text-xl text-white">
+                    <span className="font-bold tracking-tight text-xl text-gray-900">
                         {BRAND_NAME}
                     </span>
                 </motion.div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-6">
+                <div className="hidden md:flex items-center gap-8">
                     <motion.a
                         href="#specs"
-                        className="text-white/80 hover:text-white transition-colors font-medium text-sm"
+                        className="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm"
                         whileHover={{ y: -1 }}
                     >
                         Spécifications
                     </motion.a>
                     <motion.a
                         href="#benefits"
-                        className="text-white/80 hover:text-white transition-colors font-medium text-sm"
+                        className="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm"
                         whileHover={{ y: -1 }}
                     >
                         Avantages
                     </motion.a>
                     <motion.a
                         href="#industries"
-                        className="text-white/80 hover:text-white transition-colors font-medium text-sm"
+                        className="text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm"
                         whileHover={{ y: -1 }}
                     >
                         Métiers
@@ -139,13 +144,27 @@ function EnhancedNav() {
 
                 {/* Enhanced Actions */}
                 <div className="flex items-center gap-3">
+                    {/* Email Button */}
+                    <motion.a
+                        href="mailto:sunushield@outlook.com"
+                        whileHover={{ scale: 1.05, y: -1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="hidden sm:inline-flex items-center gap-2 rounded-2xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-500 hover:text-blue-600"
+                    >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Email
+                    </motion.a>
+
+                    {/* WhatsApp Button */}
                     <motion.a
                         href={CONTACT_WHATSAPP}
                         target="_blank"
                         rel="noreferrer"
                         whileHover={{ scale: 1.05, y: -1 }}
                         whileTap={{ scale: 0.95 }}
-                        className="group inline-flex items-center gap-2 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 text-sm font-medium text-white shadow-lg hover:bg-white/20 transition-all duration-300"
+                        className="group inline-flex items-center gap-2 rounded-2xl border border-green-200 bg-green-50 px-4 py-2 text-sm font-medium text-green-700 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-green-100"
                     >
                         <motion.div
                             animate={{ rotate: [0, 15, 0] }}
@@ -156,6 +175,7 @@ function EnhancedNav() {
                         <span>WhatsApp</span>
                     </motion.a>
 
+                    {/* Phone Button */}
                     <motion.a
                         href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}
                         whileHover={{ scale: 1.05, y: -1 }}
@@ -170,7 +190,7 @@ function EnhancedNav() {
                     <motion.button
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden p-2 rounded-lg bg-white/10 border border-white/20 text-white"
+                        className="md:hidden p-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-700"
                     >
                         {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </motion.button>
@@ -183,22 +203,31 @@ function EnhancedNav() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="md:hidden bg-blue-800/95 backdrop-blur-lg border-t border-blue-700/40"
+                    className="md:hidden bg-white border-t border-gray-200 shadow-lg"
                 >
                     <div className="px-4 py-4 space-y-3">
-                        <a href="#specs" className="block text-white/80 hover:text-white transition-colors py-2">
+                        <a href="#specs" className="block text-gray-700 hover:text-blue-600 transition-colors py-2 font-medium">
                             Spécifications
                         </a>
-                        <a href="#benefits" className="block text-white/80 hover:text-white transition-colors py-2">
+                        <a href="#benefits" className="block text-gray-700 hover:text-blue-600 transition-colors py-2 font-medium">
                             Avantages
                         </a>
-                        <a href="#industries" className="block text-white/80 hover:text-white transition-colors py-2">
+                        <a href="#industries" className="block text-gray-700 hover:text-blue-600 transition-colors py-2 font-medium">
                             Métiers
                         </a>
-                        <div className="pt-2 border-t border-blue-700/40">
+                        <div className="pt-2 border-t border-gray-200 space-y-2">
+                            <a
+                                href="mailto:contact@sunushield.com"
+                                className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors py-2"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Envoyer un email
+                            </a>
                             <a
                                 href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}
-                                className="flex items-center gap-2 text-white/80 hover:text-white transition-colors py-2"
+                                className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors py-2"
                             >
                                 <Phone className="w-4 h-4" />
                                 {CONTACT_PHONE}
@@ -469,10 +498,10 @@ function EnhancedStickyShowcase() {
     const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
     return (
-        <section ref={sectionRef} className="relative py-20 md:py-28">
+        <section ref={sectionRef} className="relative py-16 md:py-24">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <motion.div
-                    className="mb-12 text-center"
+                    className="mb-8 md:mb-12 text-center"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -481,17 +510,17 @@ function EnhancedStickyShowcase() {
                     <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white">
                         Découvrez chaque{" "}
                         <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-blue-300">
-                            détail
-                        </span>
+                    détail
+                </span>
                     </h2>
-                    <p className="mt-3 text-blue-200 max-w-2xl mx-auto">
+                    <p className="mt-2 md:mt-3 text-blue-200 max-w-2xl mx-auto text-sm md:text-base">
                         Faites défiler pour explorer les caractéristiques techniques de nos chaussures de sécurité.
                     </p>
                 </motion.div>
 
-                {/* Compact Sticky Viewport */}
-                <div className="relative h-[120vh]">
-                    <div className="sticky top-20">
+                {/* Compact Sticky Viewport - Hauteur responsive */}
+                <div className="relative h-[80vh] md:h-[120vh]">
+                    <div className="sticky top-16 md:top-20">
                         <div className="relative grid place-items-center">
                             <motion.div
                                 style={{ scale, rotate, y }}
@@ -500,7 +529,7 @@ function EnhancedStickyShowcase() {
                                 <motion.img
                                     src={PRODUCT_IMG}
                                     alt={`${PRODUCT_NAME} en rotation`}
-                                    className="w-[60vw] max-w-[600px] mx-auto drop-shadow-2xl"
+                                    className="w-[80vw] md:w-[60vw] max-w-[400px] md:max-w-[600px] mx-auto drop-shadow-2xl"
                                 />
                             </motion.div>
                         </div>
